@@ -165,8 +165,8 @@ form.form { display: grid; gap: 18px; }
 .fld input, .fld select, .fld textarea { font: 400 15px/1.4 var(--font); color: var(--ink); background: var(--bg-2); border: 1px solid transparent; border-radius: var(--r-sm); padding: 12px 14px; width: 100%; }
 .fld input:focus, .fld select:focus, .fld textarea:focus { outline: none; border-color: var(--green); background: #fff; box-shadow: 0 0 0 3px var(--green-t); }
 .picks { display: flex; flex-wrap: wrap; gap: 8px; }
-.picks label { cursor: pointer; }
-.picks input { position: absolute; opacity: 0; pointer-events: none; }
+.picks label { cursor: pointer; position: relative; }
+.picks input { position: absolute; left: 0; top: 0; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
 .picks span { display: inline-block; font-weight: 500; font-size: 14px; padding: 8px 14px; border-radius: 99px; border: 1px solid var(--line); background: #fff; }
 .picks input:checked + span { background: var(--green); border-color: var(--green); color: #fff; }
 .picks input:focus-visible + span { outline: 2px solid var(--orange); outline-offset: 2px; }
