@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://export.openwave.com.bd/sitemap.xml
+Sitemap: https://www.export.openwave.com.bd/sitemap.xml
