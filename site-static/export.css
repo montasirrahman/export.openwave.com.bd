@@ -63,6 +63,8 @@ p { margin: 0 0 14px; }
 .hero { position: relative; min-height: min(86vh, 760px); display: flex; align-items: center; overflow: hidden; color: #fff; isolation: isolate; }
 .hero-bg { position: absolute; inset: 0; z-index: -2; }
 .hero-bg picture { display: block; width: 100%; height: 100%; }
+.hero-bg .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2.4s ease-in-out; }
+.hero-bg .slide.on { opacity: 1; }
 .hero-bg .photo { width: 100%; height: 100%; display: block; object-fit: cover; transform: scale(1.06); animation: kenburns 30s ease-in-out infinite alternate; }
 @keyframes kenburns { to { transform: scale(1.14) translate(-2%, -1%); } }
 .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10, 30, 22, .86) 0%, rgba(10, 30, 22, .62) 45%, rgba(10, 30, 22, .12) 100%); }
@@ -155,6 +157,26 @@ p { margin: 0 0 14px; }
 .side { position: sticky; top: 88px; }
 .side-card { background: var(--bg-2); border-radius: var(--r); padding: 24px; }
 .side-card h4 { font-size: 18px; } .side-card p { font-size: 15px; }
+
+.nut-sec { padding-top: 0; }
+.nut { display: grid; grid-template-columns: minmax(260px, 380px) 1fr; gap: 24px; align-items: start; }
+.nut-main, .nut-bars { background: var(--bg-2); border-radius: var(--r); padding: 24px; }
+.nut-kcal { margin: 0 0 14px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); color: var(--ink); font-size: 18px; font-weight: 600; }
+.nut-kcal strong { font-size: 44px; line-height: 1; letter-spacing: -.02em; color: var(--green-d); }
+.nut-kcal span { display: block; font-size: 13px; font-weight: 500; color: var(--muted); margin-top: 4px; }
+.nut-macros { margin: 0; }
+.nut-macros div { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.nut-macros div:last-child { border-bottom: 0; }
+.nut-macros dt { color: var(--ink); font-weight: 500; } .nut-macros dd { margin: 0; font-variant-numeric: tabular-nums; }
+.nut-macros .sub dt { padding-left: 14px; font-weight: 400; color: var(--muted); }
+.nut-bars h3 { font-size: 16px; margin: 0 0 16px; }
+.nut-bar { margin-bottom: 16px; } .nut-bar:last-child { margin-bottom: 0; }
+.nut-bar-top { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; margin-bottom: 6px; color: var(--ink-2); }
+.nut-bar-top b { color: var(--ink); }
+.nut-track { height: 10px; border-radius: 99px; background: #fff; overflow: hidden; }
+.nut-track span { display: block; height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--green), #2FA77D); }
+.nut-src { grid-column: 1 / -1; margin: 0; }
+@media (max-width: 860px) { .nut { grid-template-columns: 1fr; gap: 12px; } .nut-main, .nut-bars { padding: 18px; } }
 
 .cal-title { font-size: 22px; margin: 24px 0 12px; }
 .cal-wrap { overflow-x: auto; margin-bottom: 24px; }

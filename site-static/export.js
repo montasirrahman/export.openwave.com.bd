@@ -21,6 +21,29 @@
     }
     document.querySelectorAll('[data-m="' + month + '"]').forEach(function (e) { e.classList.add('now'); });
 
+    var hb = document.querySelector('[data-hero-slides]');
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (hb && hb.querySelector('template') && !reduce) {
+      var slides = [hb.querySelector('.slide')], extra = Array.prototype.slice.call(hb.querySelector('template').content.children), cur = 0;
+      var ready = function (s, done) {          // put the slide in the page, wait until its photo is decoded
+        if (s.parentNode !== hb) hb.appendChild(s);    // (still inside the <template> until now)
+        var im = s.querySelector('img');
+        if (im.complete && im.naturalWidth) return done();
+        im.addEventListener('load', done, { once: true }); im.addEventListener('error', done, { once: true });
+      };
+      var next = function () {
+        if (document.hidden) return setTimeout(next, 7000);
+        if (extra.length) slides.push(extra.shift());
+        var n = (cur + 1) % slides.length, s = slides[n];
+        ready(s, function () {
+          slides[cur].classList.remove('on'); s.classList.add('on'); cur = n;
+          setTimeout(next, 7000);
+        });
+      };
+      var start = function () { setTimeout(next, 6000); };
+      if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
+    }
+
     var grid = document.querySelector('[data-filter-grid]');
     document.querySelectorAll('[data-filter]').forEach(function (btn) {
       btn.addEventListener('click', function () {
