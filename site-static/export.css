@@ -27,7 +27,14 @@ p { margin: 0 0 14px; }
 .topbar-in { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 24px; height: 64px; }
 .brand { display: flex; align-items: center; gap: 10px; color: #000; }
 .brand .logo { height: 16px; width: auto; aspect-ratio: 1476 / 224; display: block; }
-.brand .tag { font-size: 12px; font-weight: 600; color: #fff; background: var(--green); border-radius: 99px; padding: 2px 9px; letter-spacing: .02em; }
+.brand .tag { position: relative; display: inline-flex; align-items: center; height: 18px; padding-left: 13px; margin-right: -.38em;
+  font: 700 11.5px/1 var(--font); letter-spacing: .38em; text-transform: uppercase; color: var(--green); }
+.brand .tag::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; border-radius: 2px; background: linear-gradient(180deg, var(--green), var(--orange)); }
+.brand .tag::after { content: ""; position: absolute; left: 13px; right: .38em; bottom: -6px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--green), var(--orange));
+  transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease); }
+.brand:hover .tag::after, .brand:focus-visible .tag::after { transform: scaleX(1); }
+.brand:hover { color: #000; }                 .foot .foot-brand .brand { display: inline-flex; color: #fff; padding: 0; margin-bottom: 18px; } .foot-brand .brand .logo { margin: 0; }
+.foot .foot-brand .brand:hover { color: #fff; } .foot-brand .brand .tag { color: #7FD6B4; }
 .nav { display: flex; gap: 2px; justify-content: center; }
 .nav a { color: var(--ink); font-weight: 500; font-size: 14px; padding: 7px 13px; border-radius: var(--r-sm); }
 .nav a:hover, .nav a.on { background: var(--green-t); color: var(--green-d); }
