@@ -34,6 +34,23 @@
       });
     });
 
+    var live = document.querySelector('[data-live]');
+    if (live) {
+      var n = 0;
+      document.querySelectorAll('.card[data-months]').forEach(function (c) { if (c.classList.contains('in-season')) n++; });
+      if (count) n = count;
+      if (n) live.textContent = names[month - 1] + ': ' + n + ' crops in season now';
+    }
+
+    var pb = document.querySelector('[data-pricebox]');
+    if (pb) pb.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var opt = pb.product.options[pb.product.selectedIndex];
+      var msg = 'Hello Openwave Export, please send today\'s price.\nProduct: ' + opt.getAttribute('data-name') +
+        '\nDestination: ' + (pb.to.value.trim() || '___') + '\nQuantity: ' + pb.qty.value;
+      window.open('https://wa.me/' + pb.getAttribute('data-wa') + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+    });
+
     var form = document.querySelector('form[data-api]');
     if (!form) return;
     var params = new URLSearchParams(location.search);
